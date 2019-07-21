@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="{{ default "" .Site.LanguageCode }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ if .Page.Title }}{{ .Page.Title }}{{ end }}{{ if and (.Page.Title) (.Site.Params.AppendSiteTitle) }} | {{ end }}{{ if .Site.Params.AppendSiteTitle }}{{ .Site.Title }}{{ end }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        {{- range $metaName, $metaValue := .Site.Params.Meta }}
+        <meta name="{{ $metaName }}" content="{{ htmlUnescape $metaValue }}" />
+        {{- end }}
+
+        <!-- Favicons -->
+        <link rel="icon" href="{{ .Site.BaseURL }}static/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="{{ .Site.BaseURL }}static/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="icon" href="{{ .Site.BaseURL }}img/favicons/favicon.ico">
+
+        <link href="{{ .Site.BaseURL }}css/bootstrap.min.css" rel="stylesheet" />
+        {{ .Hugo.Generator }}
+    </head>
+    <body>
+        <noscript>
+            <strong>We're sorry but {{.Site.BaseURL}} doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+        </noscript>
+        <header>
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid d-none d-md-block" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image.SourceWide }}" alt="{{ .Site.Params.Theme.Header.Image.Alt }}">
+                        <img class="img-fluid d-none d-sm-block d-md-none" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image.SourceMedium }}" alt="{{ .Site.Params.Theme.Header.Image.Alt }}">
+                        <img class="img-fluid d-block d-sm-none" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Image.SourceSmall }}" alt="{{ .Site.Params.Theme.Header.Image.Alt }}">
+                        <div class="container" style="top: 3px; width: 100%; height: 100%; position:absolute; opacity:1;">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img class="img-fluid" src="{{ .Site.BaseURL }}{{ .Site.Params.Theme.Header.Logo.Source }}" alt="{{ .Site.Params.Theme.Header.Logo.Alt }}">
+                                </div>
+                                <div class="col-9 col-xl-8" style="color: #f0ffd0;">
+                                    <h1 class="d-none d-md-block">{{ .Site.Params.Title }}</h1>
+                                    <h1 class="d-block d-md-none">{{ .Site.Params.Shorttitle }}</h1>
+                                    <h2 class="d-none d-lg-block">{{ .Site.Params.Subtitle }}</h2>
+                                    <h3 class="d-none d-sm-block d-lg-none">{{ .Site.Params.Shortsubtitle }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-md navbar-dark p-0">
+                <div class="container" style="background-color: #ffd700;">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="nav">
+                        <ul class="navbar-nav mr-auto">
+{{- $currentPage := . }}
+{{- range .Site.Menus.main }}
+                            <li class="nav-item{{ if .HasChildren }} dropdown{{ end }}{{ if eq $currentPage.URL .URL }} active{{ end }}">
+                                <a class="nav-link{{ if .HasChildren }} dropdown-toggle{{ end }}" href="{{ .URL }}"{{ if .HasChildren }} data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"{{ end }}>{{ .Name }}</a>
+{{- if .HasChildren }}
+                                <div class="dropdown-menu" aria-labelledby="dropdown">
+{{- range .Children }}
+                                    <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
+{{- end }}
+                                </div>
+{{- end }}
+                            </li>
+{{- end }}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-11 col-md-10 col-lg-10">
+                    {{- block "main" . }}{{- end }}
+                </div>
+            </div>
+        </div>
+        <script src="{{ .Site.BaseURL }}js/jquery-3.4.1.min.js"></script>
+        <script src="{{ .Site.BaseURL }}js/bootstrap.min.js"></script>
+    </body>
+</html>
