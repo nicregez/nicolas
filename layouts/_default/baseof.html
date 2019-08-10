@@ -19,14 +19,19 @@
             body{background-color: {{ .Site.Params.Theme.BodyBackgroundColor }};}
             header{background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
             li.active{color: #AA00FF; background-color: rgba(255,255,255,.2);}
+            a.nav-link{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
+            div.dropdown-menu{background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
+            a.dropdown-item{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
+            a.dropdown-item:hover{color: {{ .Site.Params.Theme.HeaderTitleColor }}; background-color: rgba(255,255,255,.2);}
             h1.header,h2.header{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-family: Herculanum;}
             h1.header{font-size: 48px;}
             h2.header{font-size: 30px;}
             h1,h2{color: {{ .Site.Params.Theme.BodyTitleColor }};}
             p{color: {{ .Site.Params.Theme.BodyTextColor }};}
+            a{color: {{ .Site.Params.Theme.BodyTextColor }}; font-weight: bold;}
             footer{background-color: {{ .Site.Params.Theme.FooterBackgroundColor }};}
             p.footer{color: {{ .Site.Params.Theme.FooterTextColor }}; margin-bottom:0;}
-            a.footer{color: {{ .Site.Params.Theme.FooterTextColor }};}
+            a.footer{color: {{ .Site.Params.Theme.FooterTextColor }}; font-weight: normal;}
         </style>
 
         {{ hugo.Generator }}
