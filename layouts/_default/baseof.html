@@ -63,7 +63,7 @@
 {{- if .HasChildren }}
                                             <div class="dropdown-menu" aria-labelledby="{{ $mainItemId }}">
 {{- range .Children }}
-                                                <a href="{{ .URL }}">{{ .Name }}</a>
+                                                <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
 {{- end }}
                                             </div>
 {{- end }}
