@@ -17,21 +17,25 @@
         <link href="{{ .Site.BaseURL }}css/bootstrap.min.css" rel="stylesheet" />
         <style>
             body{background-color: {{ .Site.Params.Theme.BodyBackgroundColor }};}
+
             header{background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
             li.active{color: #AA00FF; background-color: rgba(255,255,255,.2);}
             a.nav-link{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
             div.dropdown-menu{background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
-            a.dropdown-item{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
-            a.dropdown-item:hover{color: {{ .Site.Params.Theme.HeaderTitleColor }}; background-color: rgba(255,255,255,.2);}
+            div.dropdown-menu > a{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
+            div.dropdown-menu > a:hover{color: {{ .Site.Params.Theme.HeaderTitleColor }}; background-color: rgba(255,255,255,.2);}
             h1.header,h2.header{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-family: Herculanum;}
             h1.header{font-size: 48px;}
             h2.header{font-size: 30px;}
-            h1,h2{color: {{ .Site.Params.Theme.BodyTitleColor }};}
-            p{color: {{ .Site.Params.Theme.BodyTextColor }};}
-            a{color: {{ .Site.Params.Theme.BodyTextColor }}; font-weight: bold;}
+
+            h1.content,h2.content{color: {{ .Site.Params.Theme.BodyTitleColor }};}
+            p.content{color: {{ .Site.Params.Theme.BodyTextColor }};}
+            p.content > a{color: {{ .Site.Params.Theme.BodyTextColor }}; font-weight: bold;}
+            table{margin-bottom: 1em;}
+
             footer{background-color: {{ .Site.Params.Theme.FooterBackgroundColor }};}
             p.footer{color: {{ .Site.Params.Theme.FooterTextColor }}; margin-bottom:0;}
-            a.footer{color: {{ .Site.Params.Theme.FooterTextColor }}; font-weight: normal;}
+            p.footer > a{color: {{ .Site.Params.Theme.FooterTextColor }}; font-weight: normal;}
         </style>
 
         {{ hugo.Generator }}
@@ -59,7 +63,7 @@
 {{- if .HasChildren }}
                                             <div class="dropdown-menu" aria-labelledby="{{ $mainItemId }}">
 {{- range .Children }}
-                                                <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
+                                                <a href="{{ .URL }}">{{ .Name }}</a>
 {{- end }}
                                             </div>
 {{- end }}
@@ -98,20 +102,9 @@
 
 {{- block "main" . }}{{- end }}
 
-        <footer>
-            <div class="container p-0">
-                <div class="row pt-2 pb-3">
-                    <div class="col-12 col-sm-5 col-md-7 col-lg-8">
-                        <p class="footer">&copy; 2019 Valérie Pfister</p>
-                    </div>
-                    <div class="col-12 col-sm-7 col-md-5 col-lg-4">
-                        <p class="footer">Valérie Cosima Pfister</p>
-                        <p class="footer">2502 Biel/Bienne</p>
-                        <p class="footer"><a class="footer" href="mailto:coaching@valerie-cosima-pfister.ch">coaching@valerie-cosima-pfister.ch</a></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
+{{ block "footer" . }}
+{{ partial "footer.html" . }}
+{{ end }}
 
         <script src="{{ .Site.BaseURL }}js/jquery-3.4.1.min.js"></script>
         <script src="{{ .Site.BaseURL }}js/bootstrap.min.js"></script>
