@@ -4,13 +4,13 @@
                     <div class="col-12 col-sm-5 col-md-7 col-lg-8">
 {{- $itemList := .Site.GetPage "/sections/footer/left" }}
 {{- range sort $itemList.Resources "Name" }}
-{{ partial "footer-element.html" . }}
+{{ partial "footer-element-left.html" . }}
 {{- end }}
                     </div>
                     <div class="col-12 col-sm-7 col-md-5 col-lg-4">
 {{- $itemList := .Site.GetPage "/sections/footer/right" }}
 {{- range sort $itemList.Resources "Name" }}
-{{ partial "footer-element.html" . }}
+{{ partial "footer-element-right.html" . }}
 {{- end }}
                     </div>
                 </div>

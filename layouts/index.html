@@ -2,7 +2,7 @@
         <main>
             <div class="container pt-5 pb-4">
                 <div class="row">
-                    <div class="col-12 col-lg-6 p-0">
+                    <div class="col-12 col-lg-6 pl-2 pr-2 p-lg-0">
                         <h1 class="content">{{.Title}}</h1>
 {{ with .Params.subtitle }}
                         <span class="subtitle">{{.}}</span>
@@ -10,17 +10,33 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="content" class="col-12 col-lg-6 p-0">
+                    <div id="content" class="col-12 col-lg-6 pl-2 pl-lg-0 pr-2 pr-lg-3">
 
 {{ .Content | replaceRE "<p>" "<p class=\"content\">" | safeHTML -}}
 
                     </div>
-                    <div id="spacing" class="d-none d-lg-block col-1">
-                        &nbsp;
+                    <div id="video" class="col-12 col-lg-6 pl-2 pl-lg-3 pr-2 pr-lg-0">
+{{ range .Params.video }}
+                        <div class="pb-3 pb-lg-5">
+                            <video class="img-fluid" controls="">
+                                <source src="{{ . | absURL }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video> 
+                        </div>
+{{ end }}
                     </div>
-                    <div id="images" class="col-12 col-lg-5">
-{{ range .Params.image }}
-                        <div class="pb-5">
+                </div>
+                <div class="row">
+                    <div id="imagesLeft" class="col-12 col-lg-6 pl-2 pl-lg-0 pr-2 pr-lg-3">
+{{ range .Params.imageLeft }}
+                        <div class="pb-3 pb-lg-5">
+                            <img class="img-fluid" src="{{ . | absURL }}" alt="">
+                        </div>
+{{ end }}
+                    </div>
+                    <div id="imagesRigth" class="col-12 col-lg-6 pl-2 pl-lg-3 pr-2 pr-lg-0">
+{{ range .Params.imageRight }}
+                        <div class="pb-3 pb-lg-5">
                             <img class="img-fluid" src="{{ . | absURL }}" alt="">
                         </div>
 {{ end }}
