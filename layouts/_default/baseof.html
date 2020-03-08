@@ -18,29 +18,44 @@
         <style>
             body{background-color: {{ .Site.Params.Theme.BodyBackgroundColor }};}
 
-            header{background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
-            li.active{color: #AA00FF; background-color: rgba(255,255,255,.2);}
-            a.nav-link{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
-            div.dropdown-menu{background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
-            div.dropdown-menu > a{color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
-            div.dropdown-menu > a:hover{color: {{ .Site.Params.Theme.HeaderTitleColor }}; background-color: rgba(255,255,255,.2);}
-            h1.header,h2.header{
+            header {background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
+            li.active {color: #AA00FF; background-color: rgba(255,255,255,.2);}
+            a.nav-link {color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
+            div.dropdown-menu {background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
+            div.dropdown-menu > a {color: {{ .Site.Params.Theme.HeaderTitleColor }}; font-weight: normal;}
+            div.dropdown-menu > a:hover {color: {{ .Site.Params.Theme.HeaderTitleColor }}; background-color: rgba(255,255,255,.2);}
+            h1.header,h2.header {
                 color: {{ .Site.Params.Theme.HeaderTitleColor }};
                 font-family: {{ .Site.Params.Theme.HeaderTitleFontFamily }};}
-            h1.header{font-size: 48px;}
-            h2.header{font-size: 30px;}
+            h1.header {font-size: 3rem;}
+            h2.header {font-size: 2rem;}
 
-            h1.content,h2.content{color: {{ .Site.Params.Theme.BodyTitleColor }};}
-            #content > h4{color: {{ .Site.Params.Theme.BodyTitleColor }};}
-            p.content{color: {{ .Site.Params.Theme.BodyTextColor }};}
-            p.content > a{color: {{ .Site.Params.Theme.BodyTextColor }}; font-weight: bold;}
-            #content > table{color: {{ .Site.Params.Theme.BodyTextColor }}; margin-bottom: 1em;}
+            h1.content,h2.content {color: {{ .Site.Params.Theme.BodyTitleColor }};}
+            #content > h4 {color: {{ .Site.Params.Theme.BodyTitleColor }};}
+            p.content {color: {{ .Site.Params.Theme.BodyTextColor }};}
+            p.content > a {color: {{ .Site.Params.Theme.BodyTextColor }}; font-weight: bold;}
+            #content > table {color: {{ .Site.Params.Theme.BodyTextColor }}; margin-bottom: 1em;}
             #images {padding: 0;}
-            strong{color: {{ .Site.Params.Theme.BodyTitleColor }};}
+            strong {color: {{ .Site.Params.Theme.BodyTitleColor }};}
 
-            footer{background-color: {{ .Site.Params.Theme.FooterBackgroundColor }};}
-            p.footer{color: {{ .Site.Params.Theme.FooterTextColor }}; margin-bottom:0;}
-            p.footer > a{color: {{ .Site.Params.Theme.FooterTextColor }}; font-weight: normal;}
+            footer {background-color: {{ .Site.Params.Theme.FooterBackgroundColor }};}
+            p.footer {color: {{ .Site.Params.Theme.FooterTextColor }}; margin-bottom:0;}
+            p.footer > a {color: {{ .Site.Params.Theme.FooterTextColor }}; font-weight: normal;}
+
+            div.agenda-item {
+                color: #F5C529;
+                font-size: 1.2rem;
+                border-style: solid;
+                border-width: .5px;
+                border-top-left-radius: .5em;
+                border-top-right-radius: .5em;
+                margin-bottom: 1rem;
+                background-color: {{ .Site.Params.Theme.HeaderBackgroundColor }};}
+            a.agenda-item {
+                text-decoration: none;}
+            a div.agenda-item:hover {
+                color: #FFFFFF;
+                background-color: #6953C2;}
         </style>
 
         {{ hugo.Generator }}
