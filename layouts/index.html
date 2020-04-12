@@ -24,6 +24,11 @@
                             </video> 
                         </div>
 {{ end }}
+{{ range .Params.image }}
+                        <div class="pb-3 pb-lg-5">
+                            <img class="img-fluid" src="{{ . | absURL }}" alt="">
+                        </div>
+{{ end }}
                     </div>
                 </div>
                 <div class="row">
